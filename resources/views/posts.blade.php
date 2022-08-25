@@ -2,7 +2,7 @@
     @include('_posts-header')
 
     <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
-        @if (empty($posts))
+        @if (count($posts) >= 1)
             <x-post-featured :post="$posts[0]"></x-post-featured>
 
             <div class="lg:grid lg:grid-cols-6">

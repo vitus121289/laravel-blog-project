@@ -17,11 +17,7 @@ use App\Models\{Post, Category, User};
 
 Route::get('/', [PostController::class, 'index']);
 
-Route::get('post/{post:slug}', function (Post $post) {
-    return view('post', [
-        'post' => $post
-    ]);
-});
+Route::get('post/{post:slug}', [PostController::class, 'show']);
 
 Route::get('author/{user:username}', function(User $user) {
     return view('posts', [

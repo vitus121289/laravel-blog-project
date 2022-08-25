@@ -23,15 +23,6 @@ Route::get('post/{post:slug}', function (Post $post) {
     ]);
 });
 
-Route::get('categories/{category:slug}', function(Category $category) {
-    return view('posts', [
-        'posts' => $category->posts,
-        'currentCategory' => $category,
-        'categories' => Category::all()
-        // 'posts' => $category->posts->load(['category', 'author'])
-    ]);
-});
-
 Route::get('author/{user:username}', function(User $user) {
     return view('posts', [
         'posts' => $user->posts

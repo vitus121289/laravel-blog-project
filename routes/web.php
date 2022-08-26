@@ -15,5 +15,5 @@ use App\Models\{Post, Category, User};
 |
 */
 
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('post/{post:slug}', [PostController::class, 'show']);

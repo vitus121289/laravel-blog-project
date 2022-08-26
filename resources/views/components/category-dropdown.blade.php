@@ -14,7 +14,7 @@
         </button>
     </x-slot>
 
-    <x-dropdown-item href="/">
+    <x-dropdown-item href="/" :active="request()->routeIs('home')">
         All
     </x-dropdown-item>
 

@@ -34,6 +34,9 @@
         <!-- Search -->
         <div class="relative lg:inline-flex bg-gray-100 rounded-xl">
             <form method="GET" action="#">
+                @if (request('category'))
+                    <input type="hidden" name="category" value="{{ request('category') }}">
+                @endif
                 <input type="text" name="search" placeholder="Find something"
                     class="bg-transparent placeholder-black py-2 pl-3 pr-9 text-sm font-semibold w-full lg:w-32 text-left flex lg:inline-flex"
                     value="{{ request('search') }}">

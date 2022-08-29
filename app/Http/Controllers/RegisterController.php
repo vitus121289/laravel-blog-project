@@ -20,7 +20,7 @@ class RegisterController extends Controller
             'username' => ['required', 'min:3', 'max:255', Rule::unique('users', 'username')],
             'password' => ['required', 'min:7', 'max:255']
         ]));
-
-        return redirect('/');
+        
+        return redirect('/')->with('success', 'Your account has account has been created');
     }
 }

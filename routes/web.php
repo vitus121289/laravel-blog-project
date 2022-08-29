@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{PostController};
-use App\Models\{Post, Category, User};
+use App\Http\Controllers\{PostController, RegisterController};
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +16,6 @@ use App\Models\{Post, Category, User};
 
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('post/{post:slug}', [PostController::class, 'show']);
+Route::get('register', [RegisterController::class, 'create']);
+
+Route::post('register', [RegisterController::class, 'store']);

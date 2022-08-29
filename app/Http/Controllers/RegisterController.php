@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -15,8 +16,8 @@ class RegisterController extends Controller
 
         User::create(request()->validate([
             'name' => ['required', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
-            'username' => ['required', 'min:3', 'max:255'],
+            'email' => ['required', 'email', 'max:255', Rule::unique('users', 'email')],
+            'username' => ['required', 'min:3', 'max:255', Rule::unique('users', 'username')],
             'password' => ['required', 'min:7', 'max:255']
         ]));
 

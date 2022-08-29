@@ -27,4 +27,5 @@
         {{ $slot }}
 
     </section>
+    <x-flash />
 </body>

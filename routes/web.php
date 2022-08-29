@@ -14,8 +14,14 @@ use App\Http\Controllers\{PostController, RegisterController};
 |
 */
 
+/*
+These are the routes for a GET request.
+*/
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('post/{post:slug}', [PostController::class, 'show']);
 Route::get('register', [RegisterController::class, 'create']);
 
+/*
+These are the routes for a POST request.
+*/
 Route::post('register', [RegisterController::class, 'store']);

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{PostController, RegisterController};
+use App\Http\Controllers\{PostController, RegisterController, SessionController};
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +19,10 @@ These are the routes for a GET request.
 */
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('post/{post:slug}', [PostController::class, 'show']);
-Route::get('register', [RegisterController::class, 'create']);
+Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 
 /*
 These are the routes for a POST request.
 */
-Route::post('register', [RegisterController::class, 'store']);
+Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
+Route::post('logout', [SessionController::class, 'destroy']);

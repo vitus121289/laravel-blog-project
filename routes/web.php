@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{PostController, RegisterController, SessionController};
+use App\Http\Controllers\{PostController, RegisterController, SessionController, PostCommentController};
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +28,4 @@ These are the routes for a POST request.
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
 Route::post('login', [SessionController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionController::class, 'destroy'])->middleware('auth');
+Route::post('post/{post:slug}/comments', [PostCommentController::class, 'store']);

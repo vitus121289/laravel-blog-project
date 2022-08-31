@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{PostController, RegisterController, SessionController, PostCommentController};
+use App\Http\Controllers\{NewsletterController, PostController, RegisterController, SessionController, PostCommentController};
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +29,4 @@ Route::post('register', [RegisterController::class, 'store'])->middleware('guest
 Route::post('login', [SessionController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionController::class, 'destroy'])->middleware('auth');
 Route::post('post/{post:slug}/comments', [PostCommentController::class, 'store']);
+Route::post('newsletter', NewsletterController::class);     // This uses and invoked method.

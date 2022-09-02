@@ -17,11 +17,39 @@
 
             <div class="mt-8 md:mt-0 items-center flex">
                 @auth
-                    <span class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}!</span>
-                    <form action="/logout" method="post" class="text-xs text-blue-500 ml-4 font-semibold">
-                        @csrf
-                        <button type="submit">Log Out</button>
-                    </form>
+                    <x-dropdown>
+                        <x-slot name="trigger">
+                            <button
+                                class="text-xs font-bold uppercase"
+                            >
+                                Welcome, {{ auth()->user()->name }}!
+                            </button>
+                        </x-slot>
+                        @can('admin')                       
+                            <x-dropdown-item
+                                href="/admin/posts"
+                                :active="request()->routeIs('adminDashboard')"
+                            >
+                                Dashboard
+                            </x-dropdown>
+                            <x-dropdown-item
+                                href="/admin/posts/create"
+                                :active="request()->routeIs('createPost')"
+                            >
+                                Create Post
+                            </x-dropdown-item>
+                        @endcan
+                        <x-dropdown-item
+                            href="#"
+                            x-data="{}"
+                            @click.prevent="document.querySelector('#logout-form').submit()"
+                        >
+                        Logout
+                        </x-dropdown>
+                        <form id="logout-form" action="/logout" method="post" class="hidden">
+                            @csrf
+                        </form>
+                    </x-dropdown>
                 @else
                     <a href="/register" class="text-xs font-bold uppercase">Register</a>
                     <a href="/login" class="text-xs font-bold uppercase ml-4">Login</a>

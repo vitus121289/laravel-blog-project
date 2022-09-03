@@ -3,12 +3,7 @@
     {{ $attributes->merge(['class' => 'transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl']) }}>
     <div class="py-6 px-5">
         <div>
-            @if (isset($post->thumbnail))
-                <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="Blog Post illustration" class="rounded-xl max-h-72">
-            @else
-                <img src="{{ asset('storage/' . 'thumbnails/kDB3JiNVdFvUHYIK7SpjMiq5TgwOcqf0XlI7FoSC.png') }}" alt="" class="rounded-xl max-h-72">
-            @endif
-            
+            <x-thumbnail :thumbnail="$post->thumbnail" />
         </div>
 
         <div class="mt-8 flex flex-col justify-between">

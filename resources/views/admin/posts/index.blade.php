@@ -30,11 +30,11 @@
                                                 href="#"
                                                 class="text-red-500 hover:text-red-600"
                                                 x-data={}
-                                                @click.prevent="document.querySelector('#delete-form').submit()"
+                                                @click.prevent="document.querySelector('#delete-form-{{ $post->id }}').submit()"
                                             >
                                                 Delete
                                             </a>
-                                            <form id="delete-form" action="/admin/posts/{{ $post->id }}" method="post" hidden>
+                                            <form id="delete-form-{{ $post->id }}" action="/admin/posts/{{ $post->id }}" method="post" hidden>
                                                 @csrf
                                                 @method('DELETE')
                                                 {{-- <button type="submit" class="text-xs text-gray-400">Delete</button> --}}
